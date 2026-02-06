@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Search, HelpCircle, GraduationCap } from 'lucide-react';
 import CourseCard from '../components/CourseCard';
+import { Section, Card } from '../components/ui';
 
 const Courses = () => {
   const [filter, setFilter] = useState('All');
@@ -71,62 +73,79 @@ const Courses = () => {
   const filteredCourses = filter === 'All' ? allCourses : allCourses.filter(c => c.category === filter);
 
   const faqs = [
-    { q: "Are the certifications industry-recognized?", a: "Yes, our certifications are accredited and recognized globally by leading tech firms." },
-    { q: "Do you offer job placement assistance?", a: "Absolutely. We have a dedicated career services team that helps students with resume building and interviews." },
-    { q: "Can I pay the tuition in installments?", a: "Yes, we offer flexible payment plans for all professional certifications." }
+    { q: "Are the certifications industry-recognized?", a: "Yes, our certifications are accredited and recognized globally by leading tech firms including Microsoft, Google, and Amazon." },
+    { q: "Do you offer job placement assistance?", a: "Absolutely. We have a dedicated career services team that works one-on-one with students for resume building, interview prep, and direct referrals." },
+    { q: "Can I pay the tuition in installments?", a: "Yes, we offer flexible monthly payment plans for all professional certifications to ensure accessibility." }
   ];
 
   return (
-    <div className="animate-fade-in" style={{ paddingTop: '10rem' }}>
-      <section className="container" style={{ marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Professional <span style={{ color: 'var(--accent-color)' }}>Certifications</span></h2>
-        <p style={{ color: 'var(--text-secondary)', maxWidth: '600px' }}>
-          Choose your path to success with our expert-led programs. Filter by category to find the perfect fit for your career goals.
-        </p>
-      </section>
+    <div className="animate-fade-in pt-32">
+      <Section 
+        title="Professional Certifications" 
+        subtitle="Accelerate your career with our industry-led curriculum. Each program is designed to deliver immediate value in the global job market."
+      >
+        {/* Filter Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+          <div className="flex bg-white/5 p-1 rounded-xl border border-white/10 overflow-x-auto w-full md:w-auto">
+            {categories.map(cat => (
+              <button 
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${
+                  filter === cat 
+                    ? 'bg-accent text-primary-bg shadow-[0_4px_12px_rgba(0,210,255,0.3)]' 
+                    : 'text-text-secondary hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+          <div className="relative w-full md:w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
+            <input 
+              type="text" 
+              placeholder="Search programs..." 
+              className="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-10 pr-4 text-sm outline-hidden focus:border-accent"
+            />
+          </div>
+        </div>
 
-      {/* Filter Section */}
-      <section className="container" style={{ marginBottom: '3rem' }}>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          {categories.map(cat => (
-            <button 
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={filter === cat ? 'btn-primary' : 'btn-secondary'}
-              style={{ borderRadius: '25px', padding: '0.5rem 1.5rem' }}
-            >
-              {cat}
-            </button>
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {filteredCourses.map((course) => (
+            <CourseCard key={course.id} {...course} />
           ))}
         </div>
-      </section>
-
-      {/* Courses Grid */}
-      <section className="container" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-        gap: '2rem',
-        marginBottom: '6rem'
-      }}>
-        {filteredCourses.map((course) => (
-          <CourseCard key={course.id} {...course} />
-        ))}
-      </section>
+      </Section>
 
       {/* FAQ Section */}
-      <section className="section" style={{ backgroundColor: 'var(--secondary-bg)' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <h2 className="section-title">Frequently Asked Questions</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {faqs.map((faq, i) => (
-              <div key={i} className="glass" style={{ padding: '2rem' }}>
-                <h4 style={{ color: 'var(--accent-color)', marginBottom: '1rem' }}>{faq.q}</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{faq.a}</p>
+      <Section className="bg-secondary-bg" title="Experience & Support" subtitle="Everything you need to know about starting your journey with NIIT Digital Fortress.">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="bg-accent/10 p-3 rounded-xl h-fit">
+                <HelpCircle className="text-accent" size={24} />
               </div>
+              <h2 className="text-3xl font-bold">Frequently Asked <br />Questions</h2>
+            </div>
+            <p className="text-text-secondary">
+              Can't find the answer you're looking for? Reach out to our admissions team for immediate assistance.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            {faqs.map((faq, i) => (
+              <Card key={i} className="p-6 overflow-visible" hover={false}>
+                <h4 className="font-bold text-accent mb-3 flex items-center gap-2">
+                  <GraduationCap size={18} /> {faq.q}
+                </h4>
+                <p className="text-text-secondary text-sm leading-relaxed">{faq.a}</p>
+              </Card>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
     </div>
   );
 };

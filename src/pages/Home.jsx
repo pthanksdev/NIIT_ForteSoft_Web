@@ -62,7 +62,7 @@ const Home = () => {
           <Badge variant="blue" className="mb-6">Center for Technical Excellence</Badge>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
             Architecting the <br />
-            <span className="text-linear-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-accent to-accent-secondary bg-clip-text text-transparent">
               Digital Frontier
             </span>
           </h1>
