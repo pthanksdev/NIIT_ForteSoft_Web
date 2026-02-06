@@ -1,54 +1,50 @@
 import { Link } from 'react-router-dom';
+import { Badge, Card } from './ui';
+import { ArrowRight, Clock, BarChart, CreditCard } from 'lucide-react';
 
 const CourseCard = ({ id, title, level, duration, fee, image, tag }) => {
   return (
-    <div className="glass hover-scale hover-glow" style={{ 
-      padding: '0', 
-      overflow: 'hidden',
-      display: 'flex', 
-      flexDirection: 'column', 
-      height: '100%',
-      transition: 'var(--transition)'
-    }}>
-      <div style={{ 
-        height: '200px', 
-        width: '100%', 
-        backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        position: 'relative'
-      }}>
-        <div style={{ 
-          position: 'absolute', 
-          top: '1rem', 
-          right: '1rem',
-          fontSize: '0.7rem', 
-          background: 'rgba(0, 0, 0, 0.6)', 
-          backdropFilter: 'blur(4px)',
-          color: 'var(--accent-color)',
-          padding: '0.3rem 0.8rem',
-          borderRadius: '20px',
-          fontWeight: 700,
-          border: '1px solid var(--accent-color)'
-        }}>{tag}</div>
+    <Card className="p-0 overflow-hidden flex flex-col h-full group" hover={true}>
+      <div className="h-52 w-full relative overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute top-4 right-4 animate-fade-in">
+          <Badge variant={tag === 'Most Popular' ? 'gold' : 'blue'}>{tag}</Badge>
+        </div>
       </div>
       
-      <div style={{ padding: '1.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <h3 style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>{title}</h3>
-        <div style={{ flexGrow: 1, color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-          <p style={{ marginBottom: '0.3rem' }}>📊 <b>Level:</b> {level}</p>
-          <p style={{ marginBottom: '0.3rem' }}>⏱️ <b>Duration:</b> {duration}</p>
-          <p>💰 <b>Tuition:</b> {fee}</p>
+      <div className="p-6 flex-grow flex flex-col">
+        <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-accent transition-colors">
+          {title}
+        </h3>
+        
+        <div className="space-y-3 mb-8 flex-grow">
+          <div className="flex items-center gap-2 text-sm text-text-secondary">
+            <BarChart size={16} className="text-accent" />
+            <span className="font-medium">Level:</span> {level}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-text-secondary">
+            <Clock size={16} className="text-accent" />
+            <span className="font-medium">Duration:</span> {duration}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-text-secondary">
+            <CreditCard size={16} className="text-accent" />
+            <span className="font-medium">Tuition:</span> {fee}
+          </div>
         </div>
-        <Link to={`/courses/${id}`} className="btn-primary" style={{ 
-          textAlign: 'center', 
-          padding: '0.6rem',
-          fontSize: '0.9rem'
-        }}>
-          View Details
+
+        <Link 
+          to={`/courses/${id}`} 
+          className="w-full bg-white/5 border border-white/10 py-3 rounded-lg font-bold text-center hover:bg-accent hover:text-primary-bg transition-all flex items-center justify-center gap-2 group/btn"
+        >
+          View Program Details
+          <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
         </Link>
       </div>
-    </div>
+    </Card>
   );
 };
 

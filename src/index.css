@@ -27,11 +27,28 @@
   }
 
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(0, 210, 255, 0.3)] hover:-translate-y-1;
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+    @apply border-accent/40;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  .hover-scale:active {
+    @apply scale-95;
   }
 
   .container-custom {
-    @apply max-width-[1200px] mx-auto px-6;
+    @apply max-w-[1200px] mx-auto px-6;
   }
 }
 
