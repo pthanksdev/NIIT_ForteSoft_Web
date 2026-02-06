@@ -6,7 +6,8 @@ import Courses from './pages/Courses';
 import About from './pages/About';
 import Faculty from './pages/Faculty';
 import Contact from './pages/Contact';
-import Admissions from './pages/Admissions';
+import Blog from './pages/Blog';
+import BlogDetails from './pages/BlogDetails';
 import CourseDetails from './pages/CourseDetails';
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
             <Route path="/courses/:id" element={<CourseDetails />} />
             <Route path="/about" element={<About />} />
             <Route path="/faculty" element={<Faculty />} />
-            <Route path="/admissions" element={<Admissions />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetails />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
@@ -32,3 +34,4 @@ function App() {
 }
 
 export default App;
+

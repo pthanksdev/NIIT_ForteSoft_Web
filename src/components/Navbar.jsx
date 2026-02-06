@@ -11,8 +11,9 @@ const Navbar = () => {
     { name: 'Courses', path: '/courses' },
     { name: 'About', path: '/about' },
     { name: 'Faculty', path: '/faculty' },
-    { name: 'Admissions', path: '/admissions' },
+    { name: 'Blog', path: '/blog' },
   ];
+
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 glass px-6 py-4 flex justify-between items-center animate-fade-in">

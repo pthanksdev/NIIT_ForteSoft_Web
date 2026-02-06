@@ -36,8 +36,9 @@ const Footer = () => {
         <div>
           <h4 className="font-bold mb-6 text-white">Resources</h4>
           <ul className="space-y-4 text-sm text-text-secondary">
-            <li><Link to="/admissions" className="hover:text-accent transition-colors">Admissions</Link></li>
+            <li><Link to="/blog" className="hover:text-accent transition-colors">Blog</Link></li>
             <li><Link to="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+
             <li><Link to="/contact" className="hover:text-accent transition-colors">Student Support</Link></li>
             <li><Link to="/contact" className="hover:text-accent transition-colors">Partner With Us</Link></li>
           </ul>
