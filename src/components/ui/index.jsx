@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+// Lucide components are passed as props, no need to import the type in JS
 
 export const Button = ({ 
   children, 

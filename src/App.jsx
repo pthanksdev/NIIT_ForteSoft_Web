@@ -12,9 +12,9 @@ import CourseDetails from './pages/CourseDetails';
 function App() {
   return (
     <Router>
-      <div className="app-wrapper" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main style={{ flexGrow: 1 }}>
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
