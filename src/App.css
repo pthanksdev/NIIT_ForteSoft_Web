@@ -1,0 +1,8 @@
+/* App-specific styles */
+.app-wrapper {
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 80vh;
+}
