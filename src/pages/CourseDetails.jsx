@@ -118,11 +118,12 @@ const CourseDetails = () => {
               <p className="text-text-secondary text-sm mb-8 leading-relaxed">
                 {course.learningOutcomes}
               </p>
-              <Link to="/admissions">
+              <Link to="/contact">
                 <Button variant="primary" className="w-full py-4 text-lg" icon={ChevronRight}>
-                  Apply for Admission
+                  Apply for Program
                 </Button>
               </Link>
+
               <div className="mt-6 flex justify-between text-xs text-text-secondary font-bold uppercase tracking-wider">
                 <span>Start Date: 15 Sep</span>
                 <span className="text-accent">Limited Slots Left</span>
